@@ -3,8 +3,12 @@ package com.example.keycloak_spring.model;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
+import org.keycloak.KeycloakSecurityContext;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -14,7 +18,7 @@ import java.util.UUID;
 @Builder
 @Entity
 @Table(name = "user_entity")
-public class User {
+public class User extends KeycloakSecurityContext implements UserDetails {
     @Id
     @GeneratedValue(generator = "hibernate_uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
@@ -44,4 +48,29 @@ public class User {
     private Integer not_before;
 
     private String realm_id;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return null;
+    }
+
+    @Override
+    public String getPassword() {
+        return null;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return false;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return false;
+    }
 }
