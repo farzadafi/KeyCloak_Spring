@@ -1,5 +1,6 @@
 package com.example.keycloak_spring.model;
 
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -10,6 +11,11 @@ import javax.persistence.OneToOne;
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@Builder
 public class Credential {
 
     @Id
