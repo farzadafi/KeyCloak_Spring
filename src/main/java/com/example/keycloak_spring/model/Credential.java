@@ -3,6 +3,7 @@ package com.example.keycloak_spring.model;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
+import org.keycloak.representations.idm.CredentialRepresentation;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
@@ -41,4 +42,12 @@ public class Credential {
     private String credential_data;
 
     private int priority;
+
+    public static CredentialRepresentation createPasswordCredentials(String password) {
+        CredentialRepresentation passwordCredentials = new CredentialRepresentation();
+        passwordCredentials.setTemporary(false);
+        passwordCredentials.setType(CredentialRepresentation.PASSWORD);
+        passwordCredentials.setValue(password);
+        return passwordCredentials;
+    }
 }
