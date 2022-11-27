@@ -1,15 +1,20 @@
 package com.example.keycloak_spring.model;
 
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.util.Set;
 import java.util.UUID;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@Builder
+@Entity
+@Table(name = "keycloak_role")
 public class Role {
     @Id
     @GeneratedValue(generator = "hibernate_uuid")
