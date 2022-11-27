@@ -10,4 +10,11 @@ public class KeycloakConfig {
     final static String clientId = "clientId";
     final static String userName = "admin";
     final static String password = "admin";
+
+    public KeycloakConfig() {
+    }
+
+    public static String getRealmName(){
+        return realm;
+    }
 }
