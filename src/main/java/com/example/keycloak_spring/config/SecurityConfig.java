@@ -1,5 +1,6 @@
 package com.example.keycloak_spring.config;
 
+import org.keycloak.adapters.springboot.KeycloakSpringBootConfigResolver;
 import org.keycloak.adapters.springsecurity.config.KeycloakWebSecurityConfigurerAdapter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -19,6 +20,11 @@ public class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
     @Bean
     protected SessionRegistry buildSessionRegistry() {
         return new SessionRegistryImpl();
+    }
+
+    @Bean
+    public KeycloakSpringBootConfigResolver keycloakConfigResolver() {
+        return new KeycloakSpringBootConfigResolver();
     }
 
     @Override
