@@ -8,11 +8,11 @@ import org.keycloak.admin.client.KeycloakBuilder;
 public class KeycloakConfig {
 
     static Keycloak keycloak = null;
-    final static String serverUrl = "http://0.0.0.0:8080/"; //keycloak domain and port
-    public final static String realm = "realm";
-    final static String clientId = "clientId";
-    final static String userName = "admin";
-    final static String password = "admin";
+    final static String SERVER_URL = "http://0.0.0.0:8090/"; //keycloak domain and port
+    public final static String REALM = "master";
+    final static String CLIENT_ID = "spring_keycloak";
+    final static String USERNAME = "admin";
+    final static String PASSWORD = "admin";
 
     public KeycloakConfig() {
     }
@@ -21,12 +21,12 @@ public class KeycloakConfig {
         if(keycloak == null){
 
             keycloak = KeycloakBuilder.builder()
-                    .serverUrl(serverUrl)
-                    .realm(realm)
+                    .serverUrl(SERVER_URL)
+                    .realm(REALM)
                     .grantType(OAuth2Constants.PASSWORD)
-                    .username(userName)
-                    .password(password)
-                    .clientId(clientId)
+                    .username(USERNAME)
+                    .password(PASSWORD)
+                    .clientId(CLIENT_ID)
                     .resteasyClient(new ResteasyClientBuilder()
                             .connectionPoolSize(10)
                             .build()
@@ -37,6 +37,6 @@ public class KeycloakConfig {
     }
 
     public static String getRealmName(){
-        return realm;
+        return REALM;
     }
 }
