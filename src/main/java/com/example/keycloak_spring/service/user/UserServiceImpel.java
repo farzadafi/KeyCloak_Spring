@@ -1,6 +1,6 @@
 package com.example.keycloak_spring.service.user;
 
-import com.example.keycloak_spring.FailSaveException;
+import com.example.keycloak_spring.exception.FailSaveException;
 import com.example.keycloak_spring.config.KeycloakConfig;
 import com.example.keycloak_spring.dto.UserDto;
 import com.example.keycloak_spring.model.Credential;

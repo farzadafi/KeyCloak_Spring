@@ -1,4 +1,4 @@
-package com.example.keycloak_spring;
+package com.example.keycloak_spring.exception;
 
 public class FailSaveException extends RuntimeException {
 
