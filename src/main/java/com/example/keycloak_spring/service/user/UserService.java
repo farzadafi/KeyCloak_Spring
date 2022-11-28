@@ -7,4 +7,5 @@ import org.keycloak.representations.idm.UserRepresentation;
 public interface UserService {
     UsersResource getInstance();
     UserRepresentation createUserRepresentation(UserDto userDto);
+    void registerUser(UserDto userDto);
 }
