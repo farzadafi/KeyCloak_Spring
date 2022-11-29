@@ -1,5 +1,6 @@
 package com.example.keycloak_spring.service.user;
 
+import com.example.keycloak_spring.exception.FailRemoveException;
 import com.example.keycloak_spring.exception.FailSaveException;
 import com.example.keycloak_spring.config.KeycloakConfig;
 import com.example.keycloak_spring.dto.UserDto;
@@ -72,5 +73,13 @@ public class UserServiceImpel implements UserService{
         UserResource userResource = usersResource.get(findUser.getId().toString()); //userId is here
         userResource.roles().realmLevel()
                 .add(List.of(realmRole));
+    }
+
+    public void removeUser(String username) {
+        User user = userRepository.findUserByUsername(username);
+        UsersResource instance = getInstance();
+        Response response = instance.delete(String.valueOf(user.getId()));
+        if ((response.getStatus() >= 200) && (response.getStatus() < 300))
+            throw new FailRemoveException(String.format("can't remove %s", username));
     }
 }
