@@ -39,4 +39,5 @@ public class KeycloakConfig {
     public static String getRealmName(){
         return REALM;
     }
+
 }
