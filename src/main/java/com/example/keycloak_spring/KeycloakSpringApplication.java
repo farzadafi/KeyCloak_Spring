@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class KeycloakSpringApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(KeycloakSpringApplication.class, args);
+        SpringApplication.run(KeycloakSpringApplication.class, argsNew);
     }
 
 }
