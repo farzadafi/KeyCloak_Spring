@@ -2,10 +2,7 @@ package com.example.keycloak_spring.controller;
 
 import com.example.keycloak_spring.dto.UserDto;
 import com.example.keycloak_spring.service.user.UserServiceImpel;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -22,6 +19,12 @@ public class UserController {
     @PostMapping("/registerUser")
     public String registerUser(@Valid @RequestBody UserDto userDto) {
         userService.registerUser(userDto);
+        return "OK";
+    }
+
+    @GetMapping("/removeUser")
+    public String removeUser(@RequestParam String username){
+        userService.removeUser(username);
         return "OK";
     }
 }
