@@ -4,9 +4,11 @@ import com.example.keycloak_spring.config.KeycloakConfig;
 import com.example.keycloak_spring.dto.RoleDto;
 import org.keycloak.admin.client.resource.RolesResource;
 import org.keycloak.representations.idm.RoleRepresentation;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class RoleServiceImpel implements RoleService{
 
     @Override
