@@ -5,6 +5,8 @@ import com.example.keycloak_spring.dto.RoleDto;
 import org.keycloak.admin.client.resource.RolesResource;
 import org.keycloak.representations.idm.RoleRepresentation;
 
+import java.util.List;
+
 public class RoleServiceImpel implements RoleService{
 
     @Override
@@ -20,5 +22,12 @@ public class RoleServiceImpel implements RoleService{
                 roleDto.getDescription(),
                 true);
         rolesResource.create(roleRepresentation);
+    }
+
+    @Override
+    public List<RoleRepresentation> getAllRole() {
+        RolesResource rolesResource = getInstance();
+
+        return rolesResource.list();
     }
 }
