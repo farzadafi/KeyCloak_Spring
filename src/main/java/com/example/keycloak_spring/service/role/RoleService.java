@@ -12,4 +12,6 @@ public interface RoleService {
     void addRole(RoleDto roleDto);
 
     List<RoleRepresentation> getAllRole();
-}
+
+    void removeRoles(String roleName);
+    }

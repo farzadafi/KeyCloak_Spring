@@ -30,4 +30,10 @@ public class RoleServiceImpel implements RoleService{
 
         return rolesResource.list();
     }
+
+    @Override
+    public void removeRoles(String roleName) {
+        RolesResource instance = getInstance();
+        instance.deleteRole(roleName);
+    }
 }
