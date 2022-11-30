@@ -27,4 +27,10 @@ public class RoleController {
     public List<RoleRepresentation> getAllRole() {
         return roleService.getAllRole();
     }
+
+    @GetMapping("/removeRole")
+    public String removeRole(@RequestParam String roleName) {
+        roleService.removeRoles(roleName);
+        return "OK";
+    }
 }
