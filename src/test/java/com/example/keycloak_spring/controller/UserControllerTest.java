@@ -1,10 +1,7 @@
 package com.example.keycloak_spring.controller;
 
 import net.minidev.json.JSONObject;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.MethodOrderer;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestMethodOrder;
+import org.junit.jupiter.api.*;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -18,7 +15,9 @@ import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.TestMethodOrder;
 
 @RunWith(SpringRunner.class)
 @AutoConfigureMockMvc
@@ -30,6 +29,7 @@ class UserControllerTest {
     private MockMvc mockMvc;
 
     @Test
+    @Order(1)
     void registerUser() throws Exception {
         JSONObject userJson = getUserJson();
         RequestBuilder requestBuilder = MockMvcRequestBuilders
@@ -53,9 +53,15 @@ class UserControllerTest {
         return userJson;
     }
 
-
-    @Disabled
     @Test
-    void removeUser() {
+    @Order(2)
+    void removeUser() throws Exception {
+        RequestBuilder requestBuilder = MockMvcRequestBuilders
+                .get("/user/removeUser?username=farzadafi")
+                .contentType(MediaType.APPLICATION_JSON);
+        MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+        MockHttpServletResponse response = result.getResponse();
+
+        assertEquals(HttpStatus.OK.value(), response.getStatus());
     }
 }
