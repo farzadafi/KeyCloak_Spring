@@ -27,6 +27,7 @@ class RoleControllerTest {
     private MockMvc mockMvc;
 
     @Test
+    @Order(1)
     void addRole() throws Exception {
         JSONObject roleJson = new JSONObject();
         roleJson.put("name", "admin");
@@ -41,8 +42,8 @@ class RoleControllerTest {
         assertEquals(HttpStatus.OK.value(), response.getStatus());
     }
 
-    @Disabled
     @Test
+    @Order(2)
     void getAllRole() throws Exception {
         RequestBuilder requestBuilder = MockMvcRequestBuilders
                 .get("/role/getAllRole")
@@ -53,8 +54,8 @@ class RoleControllerTest {
         assertEquals(HttpStatus.OK.value(), response.getStatus());
     }
 
-    @Disabled
     @Test
+    @Order(3)
     void removeRole() throws Exception {
         RequestBuilder requestBuilder = MockMvcRequestBuilders
                 .get("/role/removeRole?roleName=admin")
