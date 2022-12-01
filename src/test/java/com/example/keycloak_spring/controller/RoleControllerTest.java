@@ -55,6 +55,13 @@ class RoleControllerTest {
 
     @Disabled
     @Test
-    void removeRole() {
+    void removeRole() throws Exception {
+        RequestBuilder requestBuilder = MockMvcRequestBuilders
+                .get("/role/removeRole?roleName=admin")
+                .contentType(MediaType.APPLICATION_JSON);
+        MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+        MockHttpServletResponse response = result.getResponse();
+
+        assertEquals(HttpStatus.OK.value(), response.getStatus());
     }
 }
