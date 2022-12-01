@@ -43,7 +43,14 @@ class RoleControllerTest {
 
     @Disabled
     @Test
-    void getAllRole() {
+    void getAllRole() throws Exception {
+        RequestBuilder requestBuilder = MockMvcRequestBuilders
+                .get("/role/getAllRole")
+                .contentType(MediaType.APPLICATION_JSON);
+        MvcResult result = mockMvc.perform(requestBuilder).andReturn();
+        MockHttpServletResponse response = result.getResponse();
+
+        assertEquals(HttpStatus.OK.value(), response.getStatus());
     }
 
     @Disabled
